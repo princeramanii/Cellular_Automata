@@ -1,1 +1,1 @@
-# Cellular-Automata
+# Cellular Automata
