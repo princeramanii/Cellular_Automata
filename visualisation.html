@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1D Cellular Automaton Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+        .grid {
+            font-family: monospace;
+            line-height: 1;
+            margin-top: 20px;
+        }
+        .cell {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 1px;
+            background-color: #eee;
+        }
+        .cell.active {
+            background-color: #333;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="color"] {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>1D Cellular Automaton Visualizer</h1>
+        
+        <div class="options">
+            <label for="activeColor">Active Cell Color:</label>
+            <input type="color" id="activeColor" value="#333333">
+            
+            <label for="inactiveColor">Inactive Cell Color:</label>
+            <input type="color" id="inactiveColor" value="#eeeeee">
+            
+            <label for="cellSize">Cell Size:</label>
+            <input type="number" id="cellSize" min="5" max="50" value="20">
+        </div>
+        
+        <p>Enter binary patterns (one row per line):</p>
+        <textarea id="patternInput" placeholder="Enter binary patterns here, one row per line. For example:
+00010000
+00111000
+01001100
+11110110
+..."></textarea>
+        
+        <button onclick="visualizePattern()">Visualize</button>
+        <button onclick="clearGrid()">Clear</button>
+        
+        <div id="grid" class="grid"></div>
+    </div>
+    
+    <script>
+        function visualizePattern() {
+            const input = document.getElementById('patternInput').value.trim();
+            const gridElement = document.getElementById('grid');
+            const activeColor = document.getElementById('activeColor').value;
+            const inactiveColor = document.getElementById('inactiveColor').value;
+            const cellSize = document.getElementById('cellSize').value;
+            
+            // Clear previous grid
+            gridElement.innerHTML = '';
+            
+            if (!input) return;
+            
+            const rows = input.split('\n');
+            
+            rows.forEach((row, rowIndex) => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'row';
+                
+                // Add row number
+                const rowNumber = document.createElement('span');
+                rowNumber.style.display = 'inline-block';
+                rowNumber.style.width = '30px';
+                rowNumber.style.marginRight = '10px';
+                rowNumber.textContent = rowIndex + ':';
+                rowDiv.appendChild(rowNumber);
+                
+                // Process each bit in the row
+                for (let i = 0; i < row.length; i++) {
+                    if (row[i] !== '0' && row[i] !== '1') continue; // Skip non-binary characters
+                    
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.style.width = cellSize + 'px';
+                    cell.style.height = cellSize + 'px';
+                    
+                    if (row[i] === '1') {
+                        cell.className += ' active';
+                        cell.style.backgroundColor = activeColor;
+                    } else {
+                        cell.style.backgroundColor = inactiveColor;
+                    }
+                    
+                    rowDiv.appendChild(cell);
+                }
+                
+                gridElement.appendChild(rowDiv);
+            });
+        }
+        
+        function clearGrid() {
+            document.getElementById('patternInput').value = '';
+            document.getElementById('grid').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

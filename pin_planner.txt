@@ -1,0 +1,121 @@
+# Pin Planner for Rule 30 Cellular Automaton - Helium Board
+# Device: EPM3064ALC44-10N
+
+# Clock Input (Global Clock)
+Node Name: clk_50MHz
+Location: PIN_43
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+# Initial State Input (DIP Switches)
+Node Name: init_state[0]
+Location: PIN_4
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[1]
+Location: PIN_5
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[2]
+Location: PIN_6
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[3]
+Location: PIN_8
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[4]
+Location: PIN_9
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[5]
+Location: PIN_11
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[6]
+Location: PIN_12
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+Node Name: init_state[7]
+Location: PIN_14
+Direction: Input
+I/O Standard: 3.3V LVTTL
+
+# Cell State Output (LEDs)
+Node Name: cells[0]
+Location: PIN_24
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[1]
+Location: PIN_25
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[2]
+Location: PIN_26
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[3]
+Location: PIN_27
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[4]
+Location: PIN_28
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[5]
+Location: PIN_29
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[6]
+Location: PIN_31
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+Node Name: cells[7]
+Location: PIN_33
+Direction: Output
+I/O Standard: 3.3V LVTTL
+Current Strength: 8mA
+
+# Reserved JTAG Pins (Do Not Use)
+Node Name: ~nTRST~
+Location: PIN_1
+Reserved: Yes
+
+Node Name: ~nSTATUS~
+Location: PIN_2
+Reserved: Yes
+
+Node Name: ~CONF_DONE~
+Location: PIN_3
+Reserved: Yes
+
+Node Name: ~nCEO~
+Location: PIN_42
+Reserved: Yes
+
+# Notes:
+# - All inputs have weak pull-up resistors enabled
+# - All outputs are configured for 8mA drive strength
+# - JTAG pins are reserved and must not be used
+# - Unused pins are configured as tri-stated inputs with weak pull-ups 
